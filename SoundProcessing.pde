@@ -20,7 +20,7 @@ float specHight = 0.3;
 boolean isPlaying = true;
 Cube[] cubes;
 
-int nbCubes = 36;
+int nbCubes = 110;
 
 void setup()
 {
@@ -33,7 +33,7 @@ void setup()
   float XposCount = 0;
   for(int i = 0; i< nbCubes;i++){
 //fill(random(1,255),random(1,255),random(1,255));
-    cubes[i] = new Cube(XposCount);
+    cubes[i] = new Cube(XposCount,i);
     XposCount += 10;
   }
   
@@ -50,7 +50,8 @@ background(255);
   beat.detect(player.mix);
   //translate(width/2,height/2);
   //rotate(radians(frameRate));
-
+ // beat.setSensitivity(27);
+println(beat.isOnset());
      
    
      for(int i = 0;i<nbCubes;i++)
