@@ -1,12 +1,3 @@
-/**
-  * This sketch demonstrates how to play a file with Minim using an AudioPlayer. <br />
-  * It's also a good example of how to draw the waveform of the audio. Full documentation 
-  * for AudioPlayer can be found at http://code.compartmental.net/minim/audioplayer_class_audioplayer.html
-  * <p>
-  * For more information about Minim and additional features, 
-  * visit http://code.compartmental.net/minim/
-  */
-
 import ddf.minim.*;
 import ddf.minim.analysis.*;
 
@@ -38,34 +29,27 @@ void setup()
   input = minim.getLineIn(Minim.STEREO, 2048); 
   float XposCount = 0;
   for(int i = 0; i< nbCubes;i++){
-//fill(random(1,255),random(1,255),random(1,255));
+
     cubes[i] = new Cube(XposCount,i);
     XposCount += 10;
   }
-  recorder = minim.createRecorder(input,"music.wav");
+
   fft = new FFT(player.bufferSize(),player.sampleRate());
   beat = new BeatDetect();
  frameRate(60);
   player.play(0);
  
  
- ////
+
  musicLenghtFrames = SecondsToFrames(3,2);
- ////
+
 }
 
 void draw()
 {
 background(255);
   fft.forward(player.mix);
-  beat.detect(input.mix);
-  //translate(width/2,height/2);
-  //rotate(radians(frameRate));
- // beat.setSensitivity(27);
-//println(beat.isOnset());
-     
-     //println(fft.getBand(0));
-   //if(fft.getBand(0) > 10)
+
    float averageBand = 0;
    
      for(int i = 0;i<nbCubes;i++)
@@ -94,9 +78,7 @@ background(255);
   }
   else if(isRecording &&  frames >= musicLenghtFrames){
     isFinished = true;
-  //  recorder.endRecord();
-    
-  //  recorder.save();
+ 
   }
   
   frames++;
@@ -112,14 +94,14 @@ background(255);
   }
   
   
-  //saveFrame("output/####.png");
+
 
 if(isPlaying){
-// fill(#64FFA3);
+ //fill(#64FFA3);
  
 }
   else
-  //fill(#FF9064);
+  fill(#FF9064);
   rect(25,25,50,50);
 
 }
